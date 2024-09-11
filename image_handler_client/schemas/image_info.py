@@ -13,7 +13,7 @@ class ImageStatus(Enum):
 @dataclass(frozen=True)
 class ImageInfo:
     filename: str
-    date: str
+    date: int
     theme: str
     real: bool
     status: Optional[ImageStatus] = ImageStatus.UNVERIFIED
@@ -21,7 +21,7 @@ class ImageInfo:
 
 class ImageInfoSchema(Schema):
     filename = fields.Str(required=True)
-    date = fields.Str(required=True)
+    date = fields.Int(required=True)
     theme = fields.Str(required=True)
     real = fields.Bool(required=True)
     status = fields.Field(required=False, load_default=ImageStatus.UNVERIFIED.value)
